@@ -11,6 +11,12 @@
 
 @interface DKWebview : UIView <WKUIDelegate, WKNavigationDelegate>
 
+@property (nonatomic, strong) UIColor *progressTintColor; /**< 进度条的颜色*/
+
+@property (nonatomic, strong) UIColor *progressNotFilledColor;/**< 还没有被进度条覆盖的填充颜色*/
+
+@property (nonatomic, strong) UIColor *progressFilledColor; /**< 已经被进度条覆盖的填充颜色，该颜色会覆盖tintColor设置的颜色*/
+
 - (void)loadRequest:(NSURLRequest *)request;
 
 - (void)loadRequestWithURLString:(NSString *)urlString;

@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[DKWebview observeValueForKeyPath:ofObject:change:context:]:DKWebview.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "progressView.progress">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DKWebview webView:didStartProvisionalNavigation:]:DKWebview.m">
          <PersistentStrings>
             <PersistentString

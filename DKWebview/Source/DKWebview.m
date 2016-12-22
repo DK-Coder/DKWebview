@@ -7,6 +7,7 @@
 //
 
 #import "DKWebview.h"
+#import "UIProgressView+DKExtension.h"
 
 @interface DKWebview ()
 {
@@ -45,12 +46,16 @@
 {
     self.backgroundColor = [UIColor whiteColor];
     
+    self.progressTintColor = [UIColor colorWithRed:182.f / 255.f green:182.f / 255.f blue:182.f / 255.f alpha:1.f];
+    self.progressNotFilledColor = self.progressTintColor;
+    self.progressFilledColor = [UIColor colorWithRed:0.f green:120.f / 255.f blue:251.f / 255.f alpha:1.f];
+    
     CGRect frameForToolbar = CGRectMake(0.f, 0.f, self.frame.size.width, 40.f);
     CGRect frameForProgress = CGRectMake(0.f, frameForToolbar.size.height - 2.f, frameForToolbar.size.width, 2.f);
     CGRect frameForWebview = CGRectMake(0.f, frameForToolbar.size.height, self.frame.size.width, self.frame.size.height - frameForToolbar.size.height);
     // 工具栏区
     UIView *toolBar = [[UIView alloc] initWithFrame:frameForToolbar];
-    toolBar.backgroundColor = [UIColor lightGrayColor];
+    toolBar.backgroundColor = [UIColor colorWithWhite:.8f alpha:1.f];
     [self addButtonOnToolbar:toolBar tag:1 imageName:@"Back" selector:@selector(webViewGoBack)];
     [self addButtonOnToolbar:toolBar tag:2 imageName:@"Forward" selector:@selector(webViewGoForward)];
     [self addButtonOnToolbar:toolBar tag:3 imageName:@"Refresh" selector:@selector(webViewRefresh)];
@@ -58,11 +63,14 @@
     [self addSubview:toolBar];
     // 进度条区
     progressView = [[UIProgressView alloc] initWithFrame:frameForProgress];
+    progressView.tintColor = self.progressTintColor;
+    progressView.trackTintColor = self.progressNotFilledColor;
+    progressView.progressTintColor = self.progressFilledColor;
     [self addSubview:progressView];
     // webview区
     rootWebView = [[WKWebView alloc] initWithFrame:frameForWebview];
 //    rootWebView.UIDelegate = self;
-    rootWebView.navigationDelegate = self;
+//    rootWebView.navigationDelegate = self;
     [self addSubview:rootWebView];
     [rootWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -104,6 +112,10 @@
 - (void)webViewRefresh
 {
     if (rootWebView) {
+        [progressView setProgress:0.f animated:NO];
+        [progressView setAlpha:1.f animated:NO];
+        [self setStopButtonEnabled:YES];
+        
         [rootWebView reload];
     }
 }
@@ -111,7 +123,7 @@
 - (void)webViewStopLoading
 {
     if (rootWebView && [rootWebView isLoading]) {
-        progressView.alpha = 0.f;
+        [progressView setAlpha:0.f animated:NO];
         [self setStopButtonEnabled:NO];
         [rootWebView stopLoading];
     }
@@ -128,9 +140,7 @@
                 [self updateGoBackAndGoForwardStatus];
                 [self setStopButtonEnabled:NO];
                 
-                [UIView animateWithDuration:1.f delay:.5f options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                    progressView.alpha = 0.f;
-                } completion:nil];
+                [progressView setAlpha:0.f animated:YES];
             }
         }
     }
@@ -153,15 +163,26 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTag:tag];
     [button setFrame:CGRectMake(10.f * tag + widthForButton * (tag - 1), (toolBar.frame.size.height - widthForButton) / 2.f, widthForButton, widthForButton)];
-    [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"Resources.bundle/%@", name]] forState:UIControlStateNormal];
+    [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"DKResources.bundle/%@", name]] forState:UIControlStateNormal];
     [button addTarget:self action:selector forControlEvents:UIControlEventTouchUpInside];
     [toolBar addSubview:button];
 }
 
-- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
+- (void)setProgressTintColor:(UIColor *)progressTintColor
 {
-    progressView.progress = 0.f;
-    progressView.alpha = 1.f;
-    [self setStopButtonEnabled:YES];
+    _progressTintColor = progressTintColor;
+    progressView.tintColor = progressTintColor;
+}
+
+- (void)setProgressNotFilledColor:(UIColor *)progressNotFilledColor
+{
+    _progressNotFilledColor = progressNotFilledColor;
+    progressView.trackTintColor = progressNotFilledColor;
+}
+
+- (void)setProgressFilledColor:(UIColor *)progressFilledColor
+{
+    _progressFilledColor = progressFilledColor;
+    progressView.progressTintColor = progressFilledColor;
 }
 @end

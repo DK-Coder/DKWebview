@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD88CC761DF5019900A4D2F1 /* UIProgressView+DKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BD88CC751DF5019900A4D2F1 /* UIProgressView+DKExtension.m */; };
 		BDEF42B11DEFF6D0009CC4DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEF42B01DEFF6D0009CC4DB /* main.m */; };
 		BDEF42B41DEFF6D0009CC4DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEF42B31DEFF6D0009CC4DB /* AppDelegate.m */; };
 		BDEF42B71DEFF6D0009CC4DB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEF42B61DEFF6D0009CC4DB /* ViewController.m */; };
@@ -15,10 +16,12 @@
 		BDEF42BF1DEFF6D0009CC4DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDEF42BD1DEFF6D0009CC4DB /* LaunchScreen.storyboard */; };
 		BDEF42CC1DEFF7DA009CC4DB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDEF42CB1DEFF7DA009CC4DB /* WebKit.framework */; };
 		BDEF42CF1DEFF81E009CC4DB /* DKWebview.m in Sources */ = {isa = PBXBuildFile; fileRef = BDEF42CE1DEFF81E009CC4DB /* DKWebview.m */; };
-		BDEF42D11DEFFA14009CC4DB /* Resources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BDEF42D01DEFFA14009CC4DB /* Resources.bundle */; };
+		BDEF42D11DEFFA14009CC4DB /* DKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BDEF42D01DEFFA14009CC4DB /* DKResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD88CC741DF5019900A4D2F1 /* UIProgressView+DKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIProgressView+DKExtension.h"; sourceTree = "<group>"; };
+		BD88CC751DF5019900A4D2F1 /* UIProgressView+DKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIProgressView+DKExtension.m"; sourceTree = "<group>"; };
 		BDEF42AC1DEFF6D0009CC4DB /* DKWebview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DKWebview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDEF42B01DEFF6D0009CC4DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BDEF42B21DEFF6D0009CC4DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -32,7 +35,7 @@
 		BDEF42CB1DEFF7DA009CC4DB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		BDEF42CD1DEFF81E009CC4DB /* DKWebview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKWebview.h; sourceTree = "<group>"; };
 		BDEF42CE1DEFF81E009CC4DB /* DKWebview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKWebview.m; sourceTree = "<group>"; };
-		BDEF42D01DEFFA14009CC4DB /* Resources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Resources.bundle; sourceTree = "<group>"; };
+		BDEF42D01DEFFA14009CC4DB /* DKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,9 +95,11 @@
 		BDEF42C61DEFF793009CC4DB /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				BDEF42D01DEFFA14009CC4DB /* Resources.bundle */,
+				BDEF42D01DEFFA14009CC4DB /* DKResources.bundle */,
 				BDEF42CD1DEFF81E009CC4DB /* DKWebview.h */,
 				BDEF42CE1DEFF81E009CC4DB /* DKWebview.m */,
+				BD88CC741DF5019900A4D2F1 /* UIProgressView+DKExtension.h */,
+				BD88CC751DF5019900A4D2F1 /* UIProgressView+DKExtension.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -168,7 +173,7 @@
 				BDEF42BF1DEFF6D0009CC4DB /* LaunchScreen.storyboard in Resources */,
 				BDEF42BC1DEFF6D0009CC4DB /* Assets.xcassets in Resources */,
 				BDEF42BA1DEFF6D0009CC4DB /* Main.storyboard in Resources */,
-				BDEF42D11DEFFA14009CC4DB /* Resources.bundle in Resources */,
+				BDEF42D11DEFFA14009CC4DB /* DKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,6 +187,7 @@
 				BDEF42B71DEFF6D0009CC4DB /* ViewController.m in Sources */,
 				BDEF42B41DEFF6D0009CC4DB /* AppDelegate.m in Sources */,
 				BDEF42CF1DEFF81E009CC4DB /* DKWebview.m in Sources */,
+				BD88CC761DF5019900A4D2F1 /* UIProgressView+DKExtension.m in Sources */,
 				BDEF42B11DEFF6D0009CC4DB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +347,7 @@
 				BDEF42C51DEFF6D0009CC4DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
